@@ -2,11 +2,8 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import css from "styled-jsx/css";
 import {
-  Footer,
   HeroSection,
-  Navbar,
   SearchedVideos,
-  SideNav,
   VideoDetails,
   SearchResultSkeletonLoader,
   VideoDetailsSkeleton,
@@ -15,7 +12,6 @@ import {
 } from "../components";
 
 function HomePage() {
-  const [showSideNav, setShowSideNav] = useState(false);
   const [videoDetails, setVideoDetails] = useState(null);
   const [searchedVideos, setSearchedVideos] = useState(null);
   const [searchingVideo, setVideoSearching] = useState(false);
@@ -34,8 +30,6 @@ function HomePage() {
 
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
-      {showSideNav && <SideNav />}
       {/* hero section */}
       <HeroSection
         setVideoDetails={setVideoDetails}
@@ -54,7 +48,6 @@ function HomePage() {
       <IntroSection />
       {/* Features section */}
       <FeaturesSection />
-      <Footer />
       <style jsx>{styles}</style>
     </div>
   );

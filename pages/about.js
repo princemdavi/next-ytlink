@@ -1,27 +1,18 @@
-import React, { useState } from "react";
 import css from "styled-jsx/css";
-import { Footer, Navbar, SideNav } from "../components";
 
 const AboutUs = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
   return (
-    <>
-      <Navbar setShowSideNav={setShowSideNav} />
-      {showSideNav && <SideNav setShowSideNav={setShowSideNav} />}
-      <div className="container">
-        <h2 className="title">About Us</h2>
-        <p className="text">
-          Ytlink is a modern and cutting-edge YouTube downloader that can
-          download and convert YouTube videos. Using Ytlink, you can go from
-          YouTube to MP3, YouTube to MP4, or any of its supported formats. There
-          is no software to be downloaded; all conversions are done through our
-          online user interface.
-        </p>
-        <style jsx>{styles}</style>
-      </div>
-      <Footer />
-    </>
+    <div className="container">
+      <h2 className="title">About Us</h2>
+      <p className="text">
+        Ytlink is a modern and cutting-edge YouTube downloader that can download
+        and convert YouTube videos. Using Ytlink, you can go from YouTube to
+        MP3, YouTube to MP4, or any of its supported formats. There is no
+        software to be downloaded; all conversions are done through our online
+        user interface.
+      </p>
+      <style jsx>{styles}</style>
+    </div>
   );
 };
 

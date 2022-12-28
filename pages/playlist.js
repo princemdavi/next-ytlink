@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import css from "styled-jsx/css";
 import {
-  Footer,
   HeroSection,
-  Navbar,
-  SideNav,
   SearchedPlaylists,
   SearchResultSkeletonLoader,
   IntroSection,
@@ -12,15 +9,12 @@ import {
 } from "../components";
 
 const Playlist = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
   const [searchedPlaylists, setSearchedPlaylists] = useState(null);
   const [searchingVideo, setVideoSearching] = useState(false);
   const [searchingPlaylists, setSearchingPlaylists] = useState(false);
 
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
-      {showSideNav && <SideNav />}
       {/* hero section */}
       <HeroSection
         playlist={true}
@@ -44,7 +38,6 @@ const Playlist = () => {
       <IntroSection />
       {/* Features section */}
       <FeaturesSection />
-      <Footer />
       <style jsx>{styles}</style>
     </div>
   );

@@ -1,14 +1,9 @@
 import { useState } from "react";
 import css from "styled-jsx/css";
-import { Footer, Navbar, SideNav } from "../components";
 
 const PrivacyPoicy = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
-      {showSideNav && <SideNav />}
       <div className="content">
         <h2 className="title">Privacy Policy</h2>
         <h3 className="subtitle">1. Logging IP Addresses</h3>
@@ -64,7 +59,6 @@ const PrivacyPoicy = () => {
         </p>
       </div>
       <style jsx>{styles}</style>
-      <Footer />
     </div>
   );
 };

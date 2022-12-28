@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import css from "styled-jsx/css";
-import { Footer, Navbar, SideNav } from "../components";
 
 const ContactUs = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
-      {showSideNav && <SideNav />}
       <div className="content">
         <h2 className="title">Contact Us</h2>
         <p>
@@ -20,7 +15,6 @@ const ContactUs = () => {
           <a className="link">ytlinkddr@gmail.com</a>
         </Link>
       </div>
-      <Footer />
       <style jsx>{styles}</style>
     </div>
   );

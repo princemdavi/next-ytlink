@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import css from "styled-jsx/css";
-import { Footer, Navbar, SideNav } from "../components";
 
 const TermsOfUse = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
-      {showSideNav && <SideNav />}
       <div className="content">
         <h2 className="title">terms of use</h2>
         <p className="text">
@@ -639,7 +634,6 @@ const TermsOfUse = () => {
         </div>
       </div>
       <style jsx>{styles}</style>
-      <Footer />
     </div>
   );
 };
