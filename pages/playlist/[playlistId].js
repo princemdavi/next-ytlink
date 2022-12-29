@@ -3,17 +3,13 @@ import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import {
   FeaturesSection,
-  Footer,
   IntroSection,
-  Navbar,
   PlaylistVideos,
   SearchResultSkeletonLoader,
-  SideNav,
 } from "../../components";
 import { getPlaylist } from "../../services";
 
 const PlaylistDetails = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
   const [playlistDetails, setPlaylistDetails] = useState(null);
   const [searchingVideo, setVideoSearching] = useState(false);
 
@@ -37,8 +33,6 @@ const PlaylistDetails = () => {
 
   return (
     <div className="container">
-      <Navbar setShowSideNav={setShowSideNav} />
-      {showSideNav && <SideNav setShowSideNav={setShowSideNav} />}
       {/* searched videos skeleton loading */}
       {searchingVideo && <SearchResultSkeletonLoader playlistVideos={true} />}
       {/* playlist videos */}
@@ -47,7 +41,6 @@ const PlaylistDetails = () => {
       <IntroSection />
       {/* Features section */}
       <FeaturesSection />
-      <Footer />
       <style jsx>{styles}</style>
     </div>
   );
