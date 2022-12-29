@@ -10,6 +10,7 @@ import TruncateMarkup from "react-truncate-markup";
 import css from "styled-jsx/css";
 import { AudioPlayer, VideoPLayer } from ".";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 const SearchedVideo = ({ video }) => {
   const [audioId, setAudioId] = useState(null);
@@ -40,81 +41,90 @@ const SearchedVideo = ({ video }) => {
   };
 
   return (
-    <div className="container" data-theme={resolvedTheme}>
-      <div className="image">
-        <Image
-          src={video.thumbnail}
-          alt={video.title}
-          fill
-          sizes="(max-width: 768px) 100vw,
+    <motion.div
+      initial={{ y: 150 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
+      <div className="container" data-theme={resolvedTheme}>
+        <div className="image">
+          <Image
+            src={video.thumbnail}
+            alt={video.title}
+            fill
+            sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-          style={{ objectFit: "cover" }}
-        />
-        <FiPlayCircle
-          size={40}
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            cursor: "pointer",
-            zIndex: 2,
-          }}
-          color="#fff"
-          onClick={getVideoStreamUrl}
-        />
-      </div>
+            style={{ objectFit: "cover" }}
+          />
+          <FiPlayCircle
+            size={40}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              cursor: "pointer",
+              zIndex: 2,
+            }}
+            color="#fff"
+            onClick={getVideoStreamUrl}
+          />
+        </div>
 
-      <div className="content">
-        <TruncateMarkup lines={1}>
-          <h4 className="title">{video.title}</h4>
-        </TruncateMarkup>
-        <div className="vid__info">
-          <MdAccountCircle size={24} color="#184772" />
+        <div className="content">
           <TruncateMarkup lines={1}>
-            <span>{video.author.name}</span>
+            <h4 className="title">{video.title}</h4>
           </TruncateMarkup>
+          <div className="vid__info">
+            <MdAccountCircle size={24} color="#184772" />
+            <TruncateMarkup lines={1}>
+              <span>{video.author.name}</span>
+            </TruncateMarkup>
+          </div>
+          <div className="vid__info">
+            <AiTwotoneCalendar size={24} color="#184772" />
+            <TruncateMarkup lines={1}>
+              <span>{video.ago || "unknown"}</span>
+            </TruncateMarkup>
+          </div>
+          <div className="vid__info">
+            <AiFillClockCircle size={24} color="#184772" />
+            <span>{video.timestamp}</span>
+          </div>
+          <div className="vid__info">
+            <GiBrassEye size={24} color="#184772" />
+            <span>{video.views}</span>
+          </div>
+          <div className="buttons">
+            <button className="btn" onClick={() => setAudioId(video.videoId)}>
+              <HiPlay size={21} />
+              <span>play now</span>
+            </button>
+            <button
+              className="btn btn__d"
+              onClick={(e) =>
+                window.open(`/youtube/${video.videoId}`, "_blank")
+              }
+            >
+              <MdDownloadForOffline size={18} />
+              <span>download</span>
+            </button>
+          </div>
         </div>
-        <div className="vid__info">
-          <AiTwotoneCalendar size={24} color="#184772" />
-          <TruncateMarkup lines={1}>
-            <span>{video.ago || "unknown"}</span>
-          </TruncateMarkup>
-        </div>
-        <div className="vid__info">
-          <AiFillClockCircle size={24} color="#184772" />
-          <span>{video.timestamp}</span>
-        </div>
-        <div className="vid__info">
-          <GiBrassEye size={24} color="#184772" />
-          <span>{video.views}</span>
-        </div>
-        <div className="buttons">
-          <button className="btn" onClick={() => setAudioId(video.videoId)}>
-            <HiPlay size={21} />
-            <span>play now</span>
-          </button>
-          <button
-            className="btn btn__d"
-            onClick={(e) => window.open(`/youtube/${video.videoId}`, "_blank")}
-          >
-            <MdDownloadForOffline size={18} />
-            <span>download</span>
-          </button>
-        </div>
+        {/* audio player */}
+        {audioId && <AudioPlayer audioId={audioId} setAudioId={setAudioId} />}
+        {/* video player */}
+        {videoStreamUrl && (
+          <VideoPLayer
+            videoStreamUrl={videoStreamUrl}
+            setVideoStreamUrl={setVideoStreamUrl}
+          />
+        )}
+        <style jsx>{styles}</style>
       </div>
-      {/* audio player */}
-      {audioId && <AudioPlayer audioId={audioId} setAudioId={setAudioId} />}
-      {/* video player */}
-      {videoStreamUrl && (
-        <VideoPLayer
-          videoStreamUrl={videoStreamUrl}
-          setVideoStreamUrl={setVideoStreamUrl}
-        />
-      )}
-      <style jsx>{styles}</style>
-    </div>
+    </motion.div>
   );
 };
 
