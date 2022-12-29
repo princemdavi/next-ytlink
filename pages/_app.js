@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps }) {
           <Navbar setShowSideNav={setShowSideNav} showSideNav={showSideNav} />
           {showSideNav && <SideNav />}
           <Component {...pageProps} />
+          <Footer />
         </ThemeProvider>
-        <Footer />
       </motion.div>
     </AnimatePresence>
   );
