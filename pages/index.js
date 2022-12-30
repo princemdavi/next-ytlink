@@ -26,7 +26,7 @@ function HomePage() {
     setMounted(true);
     setTimeout(() => {
       setShowConfetti(false);
-    }, 5000);
+    }, 20000);
   }, []);
 
   if (!mounted) {
