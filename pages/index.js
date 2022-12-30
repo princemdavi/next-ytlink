@@ -9,7 +9,6 @@ import {
   VideoDetailsSkeleton,
   FeaturesSection,
   IntroSection,
-  Confetti,
 } from "../components";
 
 function HomePage() {
@@ -18,7 +17,6 @@ function HomePage() {
   const [searchingVideo, setVideoSearching] = useState(false);
   const [gettingVideoDetails, setGettingVideoDetails] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(true);
 
   const { theme } = useTheme();
 
@@ -42,6 +40,7 @@ function HomePage() {
         setVideoSearching={setVideoSearching}
         setGettingVideoDetails={setGettingVideoDetails}
       />
+
       {/* searched videos skeleton loading */}
       {searchingVideo && <SearchResultSkeletonLoader />}
       {/* skeleton when getting video details */}
@@ -54,7 +53,6 @@ function HomePage() {
       {/* Features section */}
       <FeaturesSection />
       {/* confetti */}
-      {showConfetti && <Confetti />}
       <style jsx>{styles}</style>
     </div>
   );
