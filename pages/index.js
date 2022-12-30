@@ -9,6 +9,7 @@ import {
   VideoDetailsSkeleton,
   FeaturesSection,
   IntroSection,
+  Confetti,
 } from "../components";
 
 function HomePage() {
@@ -17,11 +18,15 @@ function HomePage() {
   const [searchingVideo, setVideoSearching] = useState(false);
   const [gettingVideoDetails, setGettingVideoDetails] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(true);
 
   const { theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000);
   }, []);
 
   if (!mounted) {
@@ -48,6 +53,8 @@ function HomePage() {
       <IntroSection />
       {/* Features section */}
       <FeaturesSection />
+      {/* confetti */}
+      {showConfetti && <Confetti />}
       <style jsx>{styles}</style>
     </div>
   );

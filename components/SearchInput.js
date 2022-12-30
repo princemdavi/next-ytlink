@@ -253,9 +253,8 @@ const styles = css`
   }
 
   [data-theme="dark"] .input {
-    background-color: #184772;
+    background-color: hsl(209, 65%, 25%);
     color: #fff;
-    border: 1px solid #fff;
   }
 
   .input::placeholder {

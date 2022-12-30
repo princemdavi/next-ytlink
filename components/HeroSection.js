@@ -95,13 +95,8 @@ const styles = css`
     text-align: center;
     text-transform: capitalize;
     font-size: 32px;
-    color: #050505;
+    color: #0086e7;
     font-family: "Roboto Condensed", sans-serif;
-    color: #555;
-  }
-
-  .container[data-theme="dark"] .title {
-    color: #f5f9fc;
   }
 
   .subtitle {

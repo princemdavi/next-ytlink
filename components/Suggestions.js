@@ -55,8 +55,7 @@ const styles = css`
   }
 
   .container[data-theme="dark"] {
-    background-color: #184772;
-    border: 1px solid #fff;
+    background-color: hsl(209, 65%, 25%);
   }
 
   .container::-webkit-scrollbar {

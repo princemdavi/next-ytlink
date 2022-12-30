@@ -28,7 +28,8 @@ const styles = css`
     font-size: 20px;
     margin-bottom: 5px;
     font-family: "Roboto Condensed", sans-serif;
-    font-weight: 700;
+    font-weight: 400;
+    color: #4e91c8;
   }
   .text {
     text-align: center;

@@ -56,17 +56,13 @@ const styles = css`
     margin-bottom: 1rem;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 400;
-    color: #555;
+    color: #0086e7;
   }
 
   .texts {
     text-align: center;
     line-height: 2.1;
     color: #555;
-  }
-
-  .container[data-theme="dark"] .title {
-    color: #c2c8cc;
   }
 
   .container[data-theme="dark"] .texts {

@@ -170,13 +170,10 @@ const styles = css`
   .brand > span {
     font-size: 24px;
     font-family: "Roboto Condensed", sans-serif;
-    font-weight: 400;
+    font-weight: bold;
     padding-inline: 8px;
     border-radius: 4px;
-  }
-
-  .container[data-theme="dark"] .brand > span {
-    color: #fff;
+    color: #0086e7;
   }
 
   .links {

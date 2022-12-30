@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { Confetti } from ".";
 
 const DownloadFile = ({
   video,
@@ -34,74 +35,77 @@ const DownloadFile = ({
   };
 
   return (
-    <div
-      cont="modal"
-      className="container"
-      onClick={onContainerClick}
-      data-theme={resolvedTheme}
-    >
-      <div className="modal">
-        <div className="modalContent">
-          {video && (
-            <div>
-              <div className="modalImage">
-                <Image
-                  alt={video.title}
-                  src={video.thumbnail}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <TruncateMarkup lines={1}>
-                <h4 className="title">{video.title}</h4>
-              </TruncateMarkup>
+    <>
+      <div
+        cont="modal"
+        className="container"
+        onClick={onContainerClick}
+        data-theme={resolvedTheme}
+      >
+        <div className="modal">
+          <div className="modalContent">
+            {video && (
               <div>
-                {downloadLink && (
-                  <div>
-                    <button
-                      className="btnd"
-                      onClick={() => window.open(downloadLink, "_blank")}
-                    >
-                      <BsArrowDownCircleFill size={20} />
-                      <span>Download</span>
-                    </button>
-                  </div>
-                )}
-                {!downloadLink && !error && (
-                  <div>
-                    <Lottie
-                      animationData={processing}
-                      loop
-                      style={{
-                        height: "180px",
-                        width: "100%",
-                        marginTop: "-3.2rem",
-                      }}
-                    />
-                    <p style={{ marginTop: "-3.2rem" }}>
-                      Please wait while we prepare your file for download
+                <div className="modalImage">
+                  <Image
+                    alt={video.title}
+                    src={video.thumbnail}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <TruncateMarkup lines={1}>
+                  <h4 className="title">{video.title}</h4>
+                </TruncateMarkup>
+                <div>
+                  {downloadLink && (
+                    <div>
+                      <button
+                        className="btnd"
+                        onClick={() => window.open(downloadLink, "_blank")}
+                      >
+                        <BsArrowDownCircleFill size={20} />
+                        <span>Download</span>
+                      </button>
+                    </div>
+                  )}
+                  {!downloadLink && !error && (
+                    <div>
+                      <Lottie
+                        animationData={processing}
+                        loop
+                        style={{
+                          height: "180px",
+                          width: "100%",
+                          marginTop: "-3.2rem",
+                        }}
+                      />
+                      <p style={{ marginTop: "-3.2rem" }}>
+                        Please wait while we prepare your file for download
+                      </p>
+                    </div>
+                  )}
+                  {error && (
+                    <div className="error">
+                      <p>{error}</p>
+                    </div>
+                  )}
+                  {downloadLink || error ? (
+                    <p style={{ fontSize: "15px" }}>
+                      Thank you for trusting us by using our service.
                     </p>
-                  </div>
-                )}
-                {error && (
-                  <div className="error">
-                    <p>{error}</p>
-                  </div>
-                )}
-                {downloadLink || error ? (
-                  <p style={{ fontSize: "15px" }}>
-                    Thank you for trusting us by using our service.
-                  </p>
-                ) : (
-                  ""
-                )}
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
+        {downloadLink && <Confetti />}
       </div>
       <style jsx>{styles}</style>
-    </div>
+    </>
   );
 };
 

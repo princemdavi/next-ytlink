@@ -24,3 +24,4 @@ export { default as IntroSection } from "./IntroSection";
 export { default as FeaturesSection } from "./FeaturesSection";
 export { default as FeatureItem } from "./FeatureItem";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
+export { default as Confetti } from "./Confetti";

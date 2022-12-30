@@ -140,6 +140,7 @@ const styles = css`
     font-size: 18px;
     margin-bottom: 0.125rem;
     font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
     color: #ea7030;
   }
   .btns {

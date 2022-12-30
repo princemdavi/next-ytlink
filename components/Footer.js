@@ -1,6 +1,8 @@
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { animateScroll as scroll } from "react-scroll";
+import { RxCaretUp } from "react-icons/rx";
 import css from "styled-jsx/css";
 
 const Footer = () => {
@@ -21,6 +23,9 @@ const Footer = () => {
           <Link href="/contact" className="link">
             Contact
           </Link>
+          <Link href="/about" className="link">
+            About
+          </Link>
 
           <Link href="/faqs" className="link">
             FAQs
@@ -40,6 +45,9 @@ const Footer = () => {
         </div>
         <p className="copyright">&copy;2022 ytlink. All Rights Reserved.</p>
       </div>
+      <button className="scroll__btn" onClick={() => scroll.scrollToTop()}>
+        <RxCaretUp size={36} />
+      </button>
       {/* styles */}
       <style jsx>{styles}</style>
     </div>
@@ -114,5 +122,19 @@ const styles = css`
 
   .copyright {
     font-size: 13px;
+  }
+
+  .scroll__btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+    background-color: #0086e7;
+    color: #fff;
   }
 `;

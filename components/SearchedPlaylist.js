@@ -94,7 +94,7 @@ const styles = css`
   }
 
   .title {
-    font-size: 16px;
+    font-size: 18px;
     color: #ea7030;
     margin-bottom: 8px;
   }
@@ -113,12 +113,11 @@ const styles = css`
     color: #fff;
     padding: 5px 10px;
     text-transform: capitalize;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     transition: background-color 0.25s ease-out;
     margin-top: 10px;
     font-family: "Roboto Condensed", sans-serif;
-
     outline: none;
   }
   .btn:hover {

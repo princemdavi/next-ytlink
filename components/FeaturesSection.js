@@ -108,10 +108,7 @@ const styles = css`
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 400;
     margin-bottom: 1rem;
-  }
-
-  .container[data-theme="light"] .title {
-    color: #555;
+    color: #0086e7;
   }
 
   @media (min-width: 600px) {
