@@ -22,9 +22,6 @@ function HomePage() {
 
   useEffect(() => {
     setMounted(true);
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 20000);
   }, []);
 
   if (!mounted) {
