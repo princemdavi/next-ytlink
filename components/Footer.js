@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { RxCaretUp } from "react-icons/rx";
+import Tippy from "@tippyjs/react";
 import css from "styled-jsx/css";
 import { useWindowScroll } from "react-use";
-import useStore from "../store";
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,6 +20,7 @@ const Footer = () => {
   if (!mounted) {
     return null;
   }
+
   return (
     <div className="container" data-theme={resolvedTheme}>
       <div className="content">
@@ -50,9 +51,11 @@ const Footer = () => {
         <p className="copyright">&copy;2022 ytlink. All Rights Reserved.</p>
       </div>
       {y > 350 && (
-        <button className="scroll__btn" onClick={() => scroll.scrollToTop()}>
-          <RxCaretUp size={36} />
-        </button>
+        <Tippy content="Back to top">
+          <button className="scroll__btn" onClick={() => scroll.scrollToTop()}>
+            <RxCaretUp size={36} />
+          </button>
+        </Tippy>
       )}
       {/* styles */}
       <style jsx>{styles}</style>
@@ -142,5 +145,15 @@ const styles = css`
     z-index: 50;
     background-color: #0086e7;
     color: #fff;
+    animation: animate 0.4s;
+  }
+
+  @keyframes animate {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 `;

@@ -3,7 +3,6 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import css from "styled-jsx/css";
 import { SearchInput } from ".";
-import useStore from "../store";
 
 const HeroSection = ({
   setVideoDetails,

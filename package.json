@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "@tippyjs/react": "^4.2.6",
     "axios": "^1.2.1",
     "framer-motion": "^8.0.2",
     "get-video-id": "^3.6.5",
