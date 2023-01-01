@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { RxCaretUp } from "react-icons/rx";
 import css from "styled-jsx/css";
+import { useWindowScroll } from "react-use";
 import useStore from "../store";
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
 
-  const showScrollToTopBtn = useStore((state) => state.scrollToTop);
+  const { y } = useWindowScroll();
 
   useEffect(() => {
-    setMounted(true);
+    !mounted && setMounted(true);
   }, []);
 
   if (!mounted) {
@@ -48,7 +49,7 @@ const Footer = () => {
         </div>
         <p className="copyright">&copy;2022 ytlink. All Rights Reserved.</p>
       </div>
-      {showScrollToTopBtn && (
+      {y > 350 && (
         <button className="scroll__btn" onClick={() => scroll.scrollToTop()}>
           <RxCaretUp size={36} />
         </button>

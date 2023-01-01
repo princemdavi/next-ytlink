@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
-import { useIntersection } from "react-use";
 import Link from "next/link";
 import css from "styled-jsx/css";
 import { SearchInput } from ".";
@@ -22,29 +21,16 @@ const HeroSection = ({
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
 
-  const updateShowScrollToTop = useStore(
-    (state) => state.updateShowScrollToTop
-  );
-
-  const intersectionRef = useRef(null);
-
-  const intersection = useIntersection(intersectionRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1,
-  });
-
   useEffect(() => {
-    !mounted && setMounted(true);
-    updateShowScrollToTop(intersection?.isIntersecting ? false : true);
-  }, [intersection]);
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return null;
   }
 
   return (
-    <div className="container" data-theme={resolvedTheme} ref={intersectionRef}>
+    <div className="container" data-theme={resolvedTheme}>
       <div className="content">
         <p className="title">Youtube downloader</p>
         <p className="subtitle">
@@ -74,6 +60,7 @@ const HeroSection = ({
           </span>
         </p>
       </div>
+
       <style jsx>{styles}</style>
     </div>
   );
