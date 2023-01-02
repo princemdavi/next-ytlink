@@ -31,11 +31,6 @@ const Footer = () => {
           <Link href="/about" className="link">
             About
           </Link>
-
-          <Link href="/faqs" className="link">
-            FAQs
-          </Link>
-
           <Link href="/terms" className="link">
             Terms of Use
           </Link>
@@ -43,15 +38,25 @@ const Footer = () => {
           <Link href="/privacy_policy" className="link">
             Privacy Policy
           </Link>
-
-          <Link href="/terms" className="link">
-            Copyright
-          </Link>
         </div>
         <p className="copyright">&copy;2022 ytlink. All Rights Reserved.</p>
       </div>
       {y > 350 && (
-        <Tippy content="Back to top">
+        <Tippy
+          content={
+            <span
+              style={{
+                display: "inline-block",
+                backgroundColor: "red",
+                padding: "5px",
+                borderRadius: "4px",
+                fontSize: "15px",
+              }}
+            >
+              Back to top
+            </span>
+          }
+        >
           <button className="scroll__btn" onClick={() => scroll.scrollToTop()}>
             <RxCaretUp size={36} />
           </button>

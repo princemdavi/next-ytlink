@@ -319,7 +319,7 @@ const styles = css`
 
     .btn {
       height: unset;
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 `;

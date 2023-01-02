@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import css from "styled-jsx/css";
 import {
@@ -9,6 +8,9 @@ import {
   VideoDetailsSkeleton,
   FeaturesSection,
   IntroSection,
+  SupportedFormats,
+  SupportedPlatforms,
+  FAQS,
 } from "../components";
 
 function HomePage() {
@@ -16,17 +18,6 @@ function HomePage() {
   const [searchedVideos, setSearchedVideos] = useState(null);
   const [searchingVideo, setVideoSearching] = useState(false);
   const [gettingVideoDetails, setGettingVideoDetails] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className="container">
@@ -49,6 +40,12 @@ function HomePage() {
       <IntroSection />
       {/* Features section */}
       <FeaturesSection />
+      {/* supported formats section */}
+      <SupportedFormats />
+      {/* supported formats section */}
+      <SupportedPlatforms />
+      {/* frequently asked questions section */}
+      <FAQS />
       {/* confetti */}
       <style jsx>{styles}</style>
     </div>

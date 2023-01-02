@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import css from "styled-jsx/css";
+import styled from "styled-components";
 import { SearchInput } from ".";
 
 const HeroSection = ({
@@ -29,15 +29,15 @@ const HeroSection = ({
   }
 
   return (
-    <div className="container" data-theme={resolvedTheme}>
-      <div className="content">
-        <p className="title">Youtube downloader</p>
-        <p className="subtitle">
+    <Container theme={resolvedTheme}>
+      <Content>
+        <Title theme={resolvedTheme}>Youtube downloader</Title>
+        <Subtitle theme={resolvedTheme}>
           The best, fast and reliable youtube{" "}
           {playlist ? "playlist" : format == "mp3" ? "audio" : "video"}{" "}
           downloader
-        </p>
-        <div className="search">
+        </Subtitle>
+        <SearchContainer>
           <SearchInput
             setVideoDetails={setVideoDetails}
             setSongDetails={setSongDetails}
@@ -51,107 +51,86 @@ const HeroSection = ({
             setGettingSongDetails={setGettingSongDetails}
             setGettingVideoDetails={setGettingVideoDetails}
           />
-        </div>
-        <p className="terms">
+        </SearchContainer>
+        <Terms theme={resolvedTheme}>
           By using our service you are accepting our{" "}
-          <span className="terms__link">
-            <Link href="/terms">Terms of Use.</Link>
-          </span>
-        </p>
-      </div>
-
-      <style jsx>{styles}</style>
-    </div>
+          <Link href="/terms" passHref legacyBehavior>
+            <StyledLink>Terms of Use.</StyledLink>
+          </Link>
+        </Terms>
+      </Content>
+    </Container>
   );
 };
 
 export default HeroSection;
 
-const styles = css`
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 320px;
-  }
-
-  .container[data-theme="dark"] {
-    background-color: #09233c;
-  }
-
-  .content {
-    width: 90%;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding-block: 1.5rem;
-    border-radius: 8px;
-  }
-
-  .container[data-theme="dark"] .content {
-    box-shadow: unset;
-  }
-
-  .title {
-    margin-bottom: 0.5rem;
-    text-align: center;
-    text-transform: capitalize;
-    font-size: 32px;
-    color: #0086e7;
-    font-family: "Roboto Condensed", sans-serif;
-  }
-
-  .subtitle {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    font-family: "Roboto Condensed", sans-serif;
-    color: #555;
-  }
-
-  .container[data-theme="dark"] .subtitle {
-    color: #c2c8cc;
-  }
-
-  .search {
-    max-width: 700px;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 1.5rem;
-  }
-
-  .terms {
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .container[data-theme="dark"] .terms {
-    color: #c2c8cc;
-  }
-
-  .terms__link {
-    color: #0086e7;
-  }
-
-  .terms__link:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  @media (min-width: 481px) {
-    .title {
-      font-size: 3em;
-    }
-
-    .subtitle {
-      font-size: 20px;
-    }
-  }
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 320px;
+  background-color: ${(props) => props.theme == "dark" && "#09233c"};
 
   @media (min-width: 1024px) {
-    .container {
-      min-height: 360px;
-    }
+    min-height: 360px;
+  }
+`;
+
+const Content = styled.div`
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-block: 1.5rem;
+  border-radius: 8px;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 0.5rem;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 32px;
+  color: ${(props) => props.theme == "dark" && "#0086e7"};
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+
+  @media (min-width: 600px) {
+    font-size: 4em;
+  }
+`;
+
+const Subtitle = styled.h3`
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  color: ${(props) => props.theme == "dark" && "#c2c8cc"};
+  @media (min-width: 600px) {
+    font-size: 1.45em;
+  }
+`;
+
+const SearchContainer = styled.div`
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+`;
+
+const Terms = styled.p`
+  text-align: center;
+  font-size: 14px;
+  color: ${(props) => props.theme == "dark" && "#c2c8cc"};
+`;
+
+const StyledLink = styled.a`
+  color: #0086e7;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 `;

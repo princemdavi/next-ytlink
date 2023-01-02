@@ -4,7 +4,7 @@ import { FaCheck, FaUserAlt } from "react-icons/fa";
 import { HiOutlineDownload } from "react-icons/hi";
 import { ImMobile } from "react-icons/im";
 import { MdHealthAndSafety } from "react-icons/md";
-import css from "styled-jsx/css";
+import styled from "styled-components";
 import FeatureItem from "./FeatureItem";
 
 const FeaturesSection = () => {
@@ -19,7 +19,7 @@ const FeaturesSection = () => {
     return null;
   }
 
-  const feature__items = [
+  const features = [
     {
       title: "unlimited downloads",
       text: "We offer unlimited downloads of youtube videos in mp4, webm and mp3 format.",
@@ -53,67 +53,58 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="container" data-theme={resolvedTheme}>
-      <div className="content">
-        <h2 className="title">youtube downloader features</h2>
+    <Container theme={resolvedTheme}>
+      <Content>
+        <Title theme={resolvedTheme}>key features</Title>
 
-        <div className="feature__items">
-          {feature__items.map((feature_item, i) => (
+        <Features>
+          {features.map((feature, i) => (
             <FeatureItem
               key={i}
-              title={feature_item.title}
-              text={feature_item.text}
-              image={feature_item.image}
+              title={feature.title}
+              text={feature.text}
+              image={feature.image}
+              theme={resolvedTheme}
             />
           ))}
-        </div>
-      </div>
-      <style jsx>{styles}</style>
-    </section>
+        </Features>
+      </Content>
+    </Container>
   );
 };
 
 export default FeaturesSection;
 
-const styles = css`
-  .container {
-    padding-block: 3rem;
-    background-color: #ebeced;
-    color: #555;
-  }
+const Container = styled.div`
+  padding-block: 3rem;
+  background-color: ${(props) =>
+    props.theme == "dark" ? "#0e1525" : "#ebeced"};
+`;
 
-  .container[data-theme="dark"] {
-    background-color: #0e1525;
-    color: #c2c8cc;
-  }
+const Content = styled.div`
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+`;
 
-  .content {
-    width: 90%;
-    max-width: 1024px;
-    margin: 0 auto;
-  }
+const Features = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1rem;
+  row-gap: 2rem;
+`;
 
-  .feature__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 1rem;
-    row-gap: 2rem;
-  }
-
-  .title {
-    text-align: center;
-    font-size: 24px;
-    text-transform: capitalize;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    color: #0086e7;
-  }
+const Title = styled.h2`
+  text-align: center;
+  font-size: 24px;
+  text-transform: capitalize;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme == "dark" && "#0086e7"};
 
   @media (min-width: 600px) {
-    .title {
-      font-size: 32px;
-    }
+    font-size: 2.5em;
   }
 `;

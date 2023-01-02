@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import logo from "../public/logo.png";
 import { MdClose } from "react-icons/md";
+import styled from "styled-components";
 
 const Navbar = ({ setShowSideNav, showSideNav }) => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const Navbar = ({ setShowSideNav, showSideNav }) => {
   if (!mounted) {
     return null;
   }
+
   return (
     <div className="container" data-theme={resolvedTheme}>
       <div className="content">
@@ -42,22 +44,22 @@ const Navbar = ({ setShowSideNav, showSideNav }) => {
         <ul className="links">
           <Link
             href="/"
-            className="link"
+            passHref
+            legacyBehavior
             style={{
               color:
                 resolvedTheme == "dark" || router.pathname == "/"
                   ? "#fff"
                   : "#555",
               backgroundColor: router.pathname == "/" ? "#0086E7" : "",
-              borderRadius: "6px",
-              padding: "2px 10px",
             }}
           >
-            single
+            <StyledLink>single</StyledLink>
           </Link>
           <Link
             href="/playlist"
-            className="link"
+            passHref
+            legacyBehavior
             style={{
               color:
                 resolvedTheme == "dark" || router.pathname == "/playlist"
@@ -65,15 +67,14 @@ const Navbar = ({ setShowSideNav, showSideNav }) => {
                   : "#555",
 
               backgroundColor: router.pathname == "/playlist" ? "#0086E7" : "",
-              borderRadius: "6px",
-              padding: "2px 10px",
             }}
           >
-            playlist
+            <StyledLink>playlist</StyledLink>
           </Link>
           <Link
             href="/instrument_vocals"
-            className="link"
+            passHref
+            legacyBehavior
             style={{
               color:
                 resolvedTheme == "dark" ||
@@ -83,26 +84,23 @@ const Navbar = ({ setShowSideNav, showSideNav }) => {
 
               backgroundColor:
                 router.pathname == "/instrument_vocals" ? "#0086E7" : "",
-              borderRadius: "6px",
-              padding: "2px 10px",
             }}
           >
-            instrument & vocals
+            <StyledLink>instrument & vocals</StyledLink>
           </Link>
           <Link
             href="/howtouse"
-            className="link"
+            passHref
+            legacyBehavior
             style={{
               color:
                 resolvedTheme == "dark" || router.pathname == "/howtouse"
                   ? "#fff"
                   : "#555",
               backgroundColor: router.pathname == "/howtouse" ? "#0086E7" : "",
-              borderRadius: "6px",
-              padding: "2px 10px",
             }}
           >
-            how to use
+            <StyledLink>how to use</StyledLink>
           </Link>
         </ul>
         <div style={{ display: "flex" }}>
@@ -131,6 +129,21 @@ const Navbar = ({ setShowSideNav, showSideNav }) => {
 };
 
 export default Navbar;
+
+const StyledLink = styled.a`
+  display: inline-block;
+  font-family: "Roboto Condensed", sans-serif;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  padding: 2px 10px;
+
+  &:hover {
+    border: 1px solid #0086e7;
+  }
+`;
 
 const styles = css`
   .container {
@@ -168,7 +181,7 @@ const styles = css`
   }
 
   .brand > span {
-    font-size: 24px;
+    font-size: 28px;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: bold;
     padding-inline: 8px;
@@ -180,15 +193,6 @@ const styles = css`
     display: none;
     align-items: center;
     margin-left: auto;
-  }
-
-  .link {
-    display: inline-block;
-    font-family: "Roboto Condensed", sans-serif;
-    cursor: pointer;
-    font-size: 18px;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
   }
 
   .menu {

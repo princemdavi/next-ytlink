@@ -1,37 +1,43 @@
 import React from "react";
-import css from "styled-jsx/css";
+import styled from "styled-components";
 
-const FeatureItem = ({ title, text, image }) => {
+const FeatureItem = ({ title, text, image, theme }) => {
   return (
-    <div className="container">
-      <div className="image">{image}</div>
-      <h3 className="title">{title}</h3>
-      <p className="text">{text}</p>
-      <style jsx>{styles}</style>
-    </div>
+    <Container>
+      <ImageWrapper>{image}</ImageWrapper>
+      <Title theme={theme}>{title}</Title>
+      <Text theme={theme}>{text}</Text>
+    </Container>
   );
 };
 
 export default FeatureItem;
 
-const styles = css`
-  .container {
-    width: 20rem;
-  }
+const Container = styled.div`
+  width: 20rem;
+`;
 
-  .image {
-    text-align: center;
+const ImageWrapper = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.h3`
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  color: ${(props) => props.theme == "dark" && "#4e91c8"};
+
+  @media (min-width: 600px) {
+    font-size: 1.5em;
   }
-  .title {
-    text-transform: capitalize;
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 5px;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 400;
-    color: #4e91c8;
-  }
-  .text {
-    text-align: center;
+`;
+
+const Text = styled.p`
+  color: ${(props) => props.theme == "dark" && "#c2c8cc"};
+  @media (min-width: 600px) {
+    font-size: 1.125em;
   }
 `;

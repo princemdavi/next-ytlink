@@ -25,3 +25,8 @@ export { default as FeaturesSection } from "./FeaturesSection";
 export { default as FeatureItem } from "./FeatureItem";
 export { default as ThemeSwitcher } from "./ThemeSwitcher";
 export { default as Confetti } from "./Confetti";
+export { default as FAQS } from "./FAQS";
+export { default as Testimonials } from "./Testimonials";
+export { default as SupportedFormats } from "./SupportedFormats";
+export { default as SupportedPlatforms } from "./SupportedPlatforms";
+export { default as CollapsibleItem } from "./CollapsibleItem";
